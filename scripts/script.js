@@ -61,8 +61,9 @@ function getQueueApi(trackerId) {
     setTimeout(function () {
 
         fetch('https://adesklanz.herokuapp.com/company/queue?company_id=' + companyId)
-            .then(response => { return response.json(); })
+            .then(response => { return response.json();})
             .then(data => {
+                console.log(data);
                 //add success searchLoader animation
                 document.getElementById("search" + trackerId).style.border = "3px solid green";
                 document.getElementById("search" + trackerId).style.background = "green";
