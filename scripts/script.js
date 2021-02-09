@@ -63,7 +63,7 @@ function getQueueApi(trackerId) {
         fetch('https://adesklanz.herokuapp.com/company/queue?company_id=' + companyId)
             .then(response => { return response.json();})
             .then(data => {
-                console.log(data);
+                console.log();
                 //add success searchLoader animation
                 document.getElementById("search" + trackerId).style.border = "3px solid green";
                 document.getElementById("search" + trackerId).style.background = "green";
@@ -76,9 +76,9 @@ function getQueueApi(trackerId) {
                     errorSpan.innerText = "";
                     var optionString = '<option name="options' + trackerId + '" value="#"> Please Select...</option>';
                     for (i = 0; i < data.length; i++) {
-                        if (data[i].is_active == 1) {
+                        if (data[i].status == 1) {
                             optionString += '<option name="options' + trackerId + '" value=' + JSON.stringify(data[i]) + '>' + data[i].queue_id + '</option> ';
-                        } else if (data[i].is_active == 0) {
+                        } else if (data[i].status == 0) {
                             optionString += '<option name="options' + trackerId + '" value=' + JSON.stringify(data[i]) + ' disabled>' + data[i].queue_id + '</option> ';
                         }
                     }
@@ -137,7 +137,7 @@ function hideInactives(hideInactivesId) {
     if (Checkbox[0].checked == true) { //disable inactive
         for (i = 1; i < Options.length; i++) {
             data = JSON.parse(Options[i].value)
-            if (data.is_active == 0) {
+            if (data.status == 0) {
                 Options[i].disabled = true;
             }
         }
@@ -145,7 +145,7 @@ function hideInactives(hideInactivesId) {
     if (Checkbox[0].checked == false) { //dont disable inactive
         for (i = 1; i < Options.length; i++) {
             data = JSON.parse(Options[i].value)
-            if (data.is_active == 0) {
+            if (data.status == 0) {
                 Options[i].removeAttribute('disabled');
             }
         }
