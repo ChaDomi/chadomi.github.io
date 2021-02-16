@@ -74,9 +74,9 @@ function getQueueApi(trackerId) {
                     errorSpan.innerText = "";
                     var optionString = '<option name="options' + trackerId + '" value="#"> Please Select...</option>';
                     for (i = 0; i < data.length; i++) {
-                        if (data[i].status == 1) {
+                        if (data[i].status == "active") {
                             optionString += '<option name="options' + trackerId + '" value=' + JSON.stringify(data[i]) + '>' + data[i].queue_id + '</option> ';
-                        } else if (data[i].status == 0) {
+                        } else if (data[i].status == "inactive") {
                             optionString += '<option name="options' + trackerId + '" value=' + JSON.stringify(data[i]) + ' disabled>' + data[i].queue_id + '</option> ';
                         }
                     }
