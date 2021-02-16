@@ -67,8 +67,7 @@ function getQueueApi(trackerId) {
                 document.getElementById("search" + trackerId).style.border = "3px solid green";
                 document.getElementById("search" + trackerId).style.background = "green";
                 document.getElementById("search" + trackerId).style.color = "white";
-
-                console.log(data[0].queue_id,data[0].status);
+                
                 if (data.length == 0) { //check if there are any existing queues
                     errorSpan.innerText = "Unknown Company Id: " + companyId;
                 } else {
